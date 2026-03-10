@@ -14,7 +14,7 @@ import { UpdateSnippetDto } from '~/snippet/dto/updateSnippet.dto';
 import { ParseObjectIdPipe } from '~/snippet/pipes/parseObjectIdPipe.service';
 import { SnippetService } from '~/snippet/snippet.service';
 
-@Controller('snippet')
+@Controller('snippets')
 export class SnippetController {
   constructor(private readonly snippetService: SnippetService) {}
   @Get()
