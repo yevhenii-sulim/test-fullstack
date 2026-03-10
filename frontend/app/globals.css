@@ -1,6 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
+  --bg-button: #041f1f;
+  --border: #041f1f;
+  --text-button: #b9dbdb;
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -8,12 +11,18 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-bg-button: var(--bg-button);
+  --color-border: var(--border);
+  --color-text-button: var(--text-button);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --bg-button: #b9dbdb;
+    --border: #b9dbdb;
+    --text-button: #041f1f;
     --background: #0a0a0a;
     --foreground: #ededed;
   }
