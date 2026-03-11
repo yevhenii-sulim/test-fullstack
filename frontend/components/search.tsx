@@ -14,7 +14,7 @@ export default function Search() {
   const [value, setValue] = useState<string>('');
   const router = useRouter();
 
-  const increment = (value: string) => router.replace(`search/${value}`);
+  const increment = (value: string) => router.replace(`/search/${value}`);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
