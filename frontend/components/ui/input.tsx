@@ -1,10 +1,8 @@
 import React from 'react';
 
-interface Props {
-  type?: string;
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   name: string;
-  defaultValue?: string;
 }
 
 export default function Input({
@@ -12,6 +10,7 @@ export default function Input({
   placeholder,
   name,
   defaultValue = '',
+  ...props
 }: Props) {
   return (
     <input
@@ -21,6 +20,7 @@ export default function Input({
       className='mx-auto w-full border border-border rounded-xl px-5 py-2'
       required
       defaultValue={defaultValue}
+      {...props}
     />
   );
 }
