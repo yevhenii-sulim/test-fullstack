@@ -2,25 +2,28 @@
 
 interface Props {
   title: string;
-  onClick: () => void;
+  onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 export default function Button({
   title,
   onClick,
+  children,
   type = 'button',
   disabled = false,
 }: Props) {
   return (
     <button
       onClick={onClick}
-      className='bg-bg-button text-text-button rounded-md py-1 w-20 text-center disabled:text-gray-400'
+      className='bg-bg-button text-text-button rounded-md py-1 w-20 text-center disabled:text-gray-400 relative overflow-hidden'
       type={type}
       disabled={disabled}
     >
       {title}
+      {children}
     </button>
   );
 }
