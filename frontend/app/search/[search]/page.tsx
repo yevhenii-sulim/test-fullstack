@@ -16,7 +16,7 @@ export default async function SnippetPage({params}: Props) {
           key={item._id}
           className='flex justify-center w-full border border-border rounded-xl px-5 py-2 '
         >
-          <Link href={`snippet/${item._id}`} className='w-full'>
+          <Link href={`/snippet/${item._id}`} className='w-full'>
             <Snippet data={item} />
           </Link>
         </li>
