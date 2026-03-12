@@ -1,23 +1,12 @@
 'use client';
 import Input from '@/components/ui/input';
-import {
-  ChangeEvent,
-  FocusEventHandler,
-  JSX,
-  SubmitEvent,
-  SyntheticEvent,
-  useState,
-} from 'react';
+import {ChangeEvent, JSX, useState} from 'react';
 import {usePathname, useRouter, useSearchParams} from 'next/navigation';
-
-const body = document.querySelector('body');
-console.dir(body);
 
 export default function Search(): JSX.Element {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
   const [value, setValue] = useState(searchParams.get('search') ?? '');
 
   const applySearch = () => {

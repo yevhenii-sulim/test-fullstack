@@ -29,11 +29,8 @@ export class SnippetService {
       filter.tags = { $all: query.tags };
     }
 
-    if (query.search) {
-      filter.$or = [
-        { title: { $regex: query.search, $options: 'i' } },
-        { content: { $regex: query.search, $options: 'i' } },
-      ];
+    if (query.search?.trim()) {
+      filter.$text = { $search: query.search.trim() };
     }
 
     const [items, total] = await Promise.all([

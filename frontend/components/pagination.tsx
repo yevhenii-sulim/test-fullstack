@@ -1,7 +1,7 @@
 'use client';
 import ReactPaginate from 'react-paginate';
 import {useRouter, useSearchParams} from 'next/navigation';
-import {JSX, useEffect, useState} from 'react';
+import {JSX, useState} from 'react';
 import {limit} from '@/constants';
 
 interface Props {

@@ -1,5 +1,4 @@
 'use client';
-import {createSnippet} from '@/actions/createSnippet';
 import FormSnippet from '@/components/formSnippet';
 import Snippet from '@/components/snippet';
 import Button from '@/components/ui/button';

@@ -10,16 +10,16 @@ export type SnippetDocument = HydratedDocument<Snippet>;
   },
 })
 export class Snippet {
-  @Prop({ required: true })
+  @Prop({ required: true, trim: true })
   title: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, trim: true })
   content: string;
 
-  @Prop({ type: [String] })
+  @Prop({ type: [String], default: [] })
   tags: string[];
 
-  @Prop({ required: true })
+  @Prop({ required: true, trim: true })
   type: string;
 
   created_at: Date;
@@ -29,3 +29,4 @@ export class Snippet {
 export const SnippetSchema = SchemaFactory.createForClass(Snippet);
 
 SnippetSchema.index({ title: 'text', content: 'text' });
+SnippetSchema.index({ tags: 1 });
