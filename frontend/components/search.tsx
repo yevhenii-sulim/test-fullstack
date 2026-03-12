@@ -2,7 +2,7 @@
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import {FormState} from '@/types/snippet';
-import {ChangeEvent, useState} from 'react';
+import {ChangeEvent, JSX, useState} from 'react';
 import {useRouter} from 'next/navigation';
 
 const initialState: FormState = {
@@ -10,7 +10,7 @@ const initialState: FormState = {
   error: null,
 };
 
-export default function Search() {
+export default function Search(): JSX.Element {
   const [value, setValue] = useState<string>('');
   const router = useRouter();
 

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import clsx from 'clsx';
+import {JSX} from 'react';
 
 interface Props {
   href: string;
@@ -10,7 +11,7 @@ interface Props {
   style?: string;
 }
 
-export function NavLink({href, page, style}: Props) {
+export function NavLink({href, page, style}: Props): JSX.Element {
   const pathname = usePathname();
   const isActive = pathname === href;
 

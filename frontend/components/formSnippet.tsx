@@ -1,10 +1,12 @@
+'use client';
+
 import {FormState} from '@/actions/updateSnippet';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
-import React, {useActionState, useEffect} from 'react';
+import {JSX, ReactNode, useActionState, useEffect} from 'react';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   increment: (
     state: FormState,
     formData: FormData,
@@ -14,7 +16,7 @@ interface Props {
   onSuccess?: () => void;
 }
 
-const initialData = {title: '', content: '', type: ''};
+const initialData = {title: '', content: '', type: '', tags: []};
 
 const initialState: FormState = {
   sent: false,
@@ -26,7 +28,7 @@ export default function FormSnippet({
   increment,
   defaultData = initialData,
   onSuccess,
-}: Props) {
+}: Props): JSX.Element {
   const [state, formAction, isPending] = useActionState(
     increment,
     initialState

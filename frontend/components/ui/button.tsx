@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import {JSX} from 'react';
 
 interface Props {
   title: string;
@@ -18,7 +19,7 @@ export default function Button({
   type = 'button',
   disabled = false,
   style,
-}: Props) {
+}: Props): JSX.Element {
   return (
     <button
       onClick={onClick}

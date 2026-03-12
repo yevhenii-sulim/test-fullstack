@@ -1,15 +1,16 @@
 'use server';
 
 import axios from 'axios';
+import {revalidatePath} from 'next/cache';
 
 export type FormState = {sent: boolean; error: string | null};
 
 export async function updateSnippet(
   _: FormState,
-  formData: FormData,
-  id?: string
+  formData: FormData
 ): Promise<FormState> {
   try {
+    const id = String(formData.get('id') ?? '');
     const title = String(formData.get('title') ?? '');
     const content = String(formData.get('content') ?? '');
     const type = String(formData.get('type') ?? '');
@@ -21,9 +22,10 @@ export async function updateSnippet(
       type,
       tags,
     });
+
+    revalidatePath(`/snippet/${id}`);
     return {sent: true, error: null};
   } catch (error) {
-    console.error(error);
     return {sent: false, error: 'message send error'};
   }
 }

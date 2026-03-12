@@ -1,6 +1,6 @@
-import React from 'react';
+import {InputHTMLAttributes, JSX} from 'react';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   name: string;
 }
@@ -11,7 +11,7 @@ export default function Input({
   name,
   defaultValue = '',
   ...props
-}: Props) {
+}: Props): JSX.Element {
   return (
     <input
       type={type}

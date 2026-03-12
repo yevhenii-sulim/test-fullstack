@@ -1,10 +1,11 @@
 import {SnippetI} from '@/types/snippet';
+import {JSX} from 'react';
 
 interface Props {
   data: SnippetI;
 }
 
-export default function Snippet({data}: Props) {
+export default function Snippet({data}: Props): JSX.Element {
   return (
     <div>
       <div className='mb-4 flex justify-between gap-3'>

@@ -2,10 +2,35 @@ import {getAllSnippet} from '@/actions/getAllSnippets';
 import Search from '@/components/search';
 import Snippet from '@/components/snippet';
 import Link from 'next/link';
+import {JSX} from 'react';
 
-export default async function Home() {
+type Props = {
+  searchParams: {
+    search?: string;
+    tags?: string | string[];
+    page?: string;
+  };
+};
+
+export default async function Home({
+  searchParams,
+}: Props): Promise<JSX.Element> {
+  const params = await searchParams;
+  const search = params.search ?? '';
+  const page = Number(params.page ?? '1');
+
+  const tags = Array.isArray(params.tags)
+    ? params.tags
+    : params.tags
+      ? [params.tags]
+      : [];
+
+  console.log('search', search);
+  console.log('page', page);
+  console.log('tags', tags);
+
   const snippet = await getAllSnippet();
-  console.log(snippet);
+
   return (
     <>
       <Search />

@@ -4,11 +4,13 @@ import FormSnippet from '@/components/formSnippet';
 import Snippet from '@/components/snippet';
 import Button from '@/components/ui/button';
 import {FormState, SnippetI} from '@/types/snippet';
-import {useState} from 'react';
+import {JSX, useState} from 'react';
 import {useRouter} from 'next/navigation';
+import {tags} from '@/constants/tags';
+import Label from '@/components/label';
 
 interface Props {
-  save: (
+  update: (
     state: FormState,
     formData: FormData,
     id?: string
@@ -18,10 +20,10 @@ interface Props {
 }
 
 export default function SnippetPageComponent({
-  save,
+  update,
   deleteSnippet,
   data,
-}: Props) {
+}: Props): JSX.Element {
   const [isEdit, setIsEdit] = useState(false);
   const router = useRouter();
 
@@ -39,40 +41,15 @@ export default function SnippetPageComponent({
     return (
       <div className='max-w-2xl mx-auto border border-border rounded-xl p-4'>
         <FormSnippet
-          increment={save}
+          increment={update}
           defaultData={data}
           onSuccess={handleSuccessEdit}
         >
+          <input type='hidden' name='id' value={data._id} />
           <div className='flex flex-col gap-2'>
-            <label className='flex gap-2 items-center py-2 cursor-pointer'>
-              <input
-                type='checkbox'
-                name='tags'
-                value='react'
-                defaultChecked={isChecked('react')}
-              />
-              React
-            </label>
-
-            <label className='flex gap-2 items-center py-2 cursor-pointer'>
-              <input
-                type='checkbox'
-                name='tags'
-                value='nextjs'
-                defaultChecked={isChecked('nextjs')}
-              />
-              Next.js
-            </label>
-
-            <label className='flex gap-2 items-center py-2 cursor-pointer'>
-              <input
-                type='checkbox'
-                name='tags'
-                value='typescript'
-                defaultChecked={isChecked('typescript')}
-              />
-              TypeScript
-            </label>
+            {tags.map((tag) => (
+              <Label tag={tag} defaultChecked={isChecked(tag)} key={tag} />
+            ))}
           </div>
         </FormSnippet>
       </div>
