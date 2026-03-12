@@ -4,7 +4,6 @@ import Snippet from '@/components/snippet';
 import Button from '@/components/ui/button';
 import {FormState, SnippetI} from '@/types/snippet';
 import {JSX, useState} from 'react';
-import {useRouter} from 'next/navigation';
 import {tags} from '@/constants/tags';
 import Label from '@/components/label';
 
@@ -24,7 +23,6 @@ export default function SnippetPageComponent({
   data,
 }: Props): JSX.Element {
   const [isEdit, setIsEdit] = useState(false);
-  const router = useRouter();
 
   const handleEdit = async () => {
     setIsEdit(true);
