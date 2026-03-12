@@ -3,6 +3,8 @@
 import {FormState} from '@/actions/updateSnippet';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
+import {initialData} from '@/constants/initialDataSnippet';
+import {SnippetI} from '@/types/snippet';
 import {JSX, ReactNode, useActionState, useEffect} from 'react';
 
 interface Props {
@@ -12,11 +14,9 @@ interface Props {
     formData: FormData,
     id?: string
   ) => Promise<FormState>;
-  defaultData?: {title: string; content: string; type: string};
+  defaultData?: SnippetI;
   onSuccess?: () => void;
 }
-
-const initialData = {title: '', content: '', type: '', tags: []};
 
 const initialState: FormState = {
   sent: false,
@@ -57,7 +57,7 @@ export default function FormSnippet({
       />
       <textarea
         defaultValue={defaultData.content}
-        className='w-full border border-border rounded-xl px-5 py-2'
+        className='w-full border border-border rounded-xl px-5 py-2 min-h-15'
         name='content'
         placeholder='Enter description'
         required

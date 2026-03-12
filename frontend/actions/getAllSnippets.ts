@@ -2,19 +2,23 @@
 
 import {SnippetI} from '@/types/snippet';
 import axios from 'axios';
+import qs from 'qs';
 
 export async function getAllSnippet(
   search?: string,
-  limit?: string,
-  page?: string
-): Promise<SnippetI[]> {
+  tags?: string[],
+  page?: number,
+  limit?: number
+): Promise<{total: number; items: SnippetI[]}> {
   try {
     const {data} = await axios.get(`http://localhost:3030/api/snippets`, {
-      params: {search, page, limit},
+      params: {search, page, limit, tags},
+      paramsSerializer: (params) =>
+        qs.stringify(params, {arrayFormat: 'repeat'}),
     });
     return data;
   } catch (error) {
     console.error(error);
-    return [];
+    return {total: 0, items: []};
   }
 }

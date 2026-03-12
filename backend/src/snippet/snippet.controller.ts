@@ -8,6 +8,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { SnippetDocument } from '~/schema/snippets.schema';
 import { CreateSnippetDto } from '~/snippet/dto/createSnippet.dto';
 import { QuerySnippetDto } from '~/snippet/dto/querySnippet.dto';
 import { UpdateSnippetDto } from '~/snippet/dto/updateSnippet.dto';
@@ -18,7 +19,9 @@ import { SnippetService } from '~/snippet/snippet.service';
 export class SnippetController {
   constructor(private readonly snippetService: SnippetService) {}
   @Get()
-  getAllSnippets(@Query() query: QuerySnippetDto) {
+  getAllSnippets(
+    @Query() query: QuerySnippetDto,
+  ): Promise<{ items: SnippetDocument[]; total: number }> {
     return this.snippetService.findAll(query);
   }
 

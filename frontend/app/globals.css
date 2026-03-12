@@ -3,16 +3,16 @@
 :root {
   --bg-button: #041f1f;
   --border: #041f1f;
+  --color: #171717;
   --text-button: #b9dbdb;
   --background: #ffffff;
-  --foreground: #171717;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --color-bg-button: var(--bg-button);
   --color-border: var(--border);
+  --color-color: var(--color);
   --color-text-button: var(--text-button);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -22,9 +22,9 @@
   :root {
     --bg-button: #b9dbdb;
     --border: #b9dbdb;
+    --color: #ededed;
     --text-button: #041f1f;
     --background: #0a0a0a;
-    --foreground: #ededed;
   }
 }
 html,
@@ -36,8 +36,10 @@ body {
 body {
   min-height: 100vh;
   background: var(--background);
-  color: var(--foreground);
+  color: var(--color);
   font-family: Arial, Helvetica, sans-serif;
+  padding-right: 24px;
+  padding-left: 24px;
 }
 button {
   cursor: pointer;

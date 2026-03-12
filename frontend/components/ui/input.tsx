@@ -10,6 +10,7 @@ export default function Input({
   placeholder,
   name,
   defaultValue = '',
+  required = true,
   ...props
 }: Props): JSX.Element {
   return (
@@ -18,7 +19,7 @@ export default function Input({
       placeholder={placeholder}
       name={name}
       className='mx-auto w-full border border-border rounded-xl px-5 py-2'
-      required
+      required={required}
       defaultValue={defaultValue}
       {...props}
     />

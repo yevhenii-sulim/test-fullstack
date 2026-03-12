@@ -17,11 +17,12 @@ export class SnippetService {
     return createdSnippet.save();
   }
 
-  async findAll(query: QuerySnippetDto): Promise<SnippetDocument[]> {
+  async findAll(
+    query: QuerySnippetDto,
+  ): Promise<{ items: SnippetDocument[]; total: number }> {
     const limit = Number(query.limit) || 10;
     const page = Number(query.page) || 1;
     const skip = (page - 1) * limit;
-
     const filter: Record<string, any> = {};
 
     if (query.tags?.length) {
@@ -35,7 +36,15 @@ export class SnippetService {
       ];
     }
 
-    return this.snippetModel.find(filter).limit(limit).skip(skip).exec();
+    const [items, total] = await Promise.all([
+      this.snippetModel.find(filter).limit(limit).skip(skip).exec(),
+      this.snippetModel.countDocuments(filter),
+    ]);
+
+    return {
+      items,
+      total,
+    };
   }
 
   async findOne(id: string): Promise<SnippetDocument> {

@@ -1,11 +1,14 @@
-import React from 'react';
+import {JSX} from 'react';
 
 interface Props {
   tag: string;
   defaultChecked?: boolean;
 }
 
-export default function Label({tag, defaultChecked = false}: Props) {
+export default function Label({
+  tag,
+  defaultChecked = false,
+}: Props): JSX.Element {
   return (
     <label
       key={tag}
